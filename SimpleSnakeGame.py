@@ -24,8 +24,8 @@ while run:
     pygame.draw.rect(game_window, (255, 0, 0), (square_x_pos, square_y_pos, square_dimension_w_h, square_dimension_w_h))
 
     pygame.display.update()
-    window.fill((0, 0, 0))
-    
+    game_window.fill((0, 0, 0))
+
 pygame.quit()
 
 
