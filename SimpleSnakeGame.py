@@ -7,13 +7,15 @@ from random import randint
 pygame.init()
 
 #Definition of variables for the game
-run = True                  # As long as run equals true the game runs
-screen_width = 600          # Setting the width of the game window
-screen_height = 600         # Setting the height of the game window
-square_x_pos = 60           # The initial x-position of the snake head at start of the game
-square_y_pos = 60           # The initial y-position of the snake head at start of the game
-square_dimension_w_h = 20   # Setting the hight and width of snake's building blocks
-
+run = True                                  # As long as run equals true the game runs
+screen_width = 600                          # Setting the width of the game window
+screen_height = 600                         # Setting the height of the game window
+square_x_pos = 60                           # The initial x-position of the snake head at start of the game
+square_y_pos = 60                           # The initial y-position of the snake head at start of the game
+square_dimension_w_h = 20                   # Setting the hight and width of snake's building blocks
+snake_head = [square_x_pos, square_y_pos]   # The initial position of our snake's head at start of the game
+snake_body = [[square_x_pos, square_y_pos], [(square_x_pos + square_dimension_w_h), square_y_pos], [(square_x_pos + (2 * square_dimension_w_h)), square_y_pos]]
+                                            # The initial position of our snake's body at start of the game
 
 # Defining our game window
 game_window = pygame.display.set_mode((screen_width, screen_height))
