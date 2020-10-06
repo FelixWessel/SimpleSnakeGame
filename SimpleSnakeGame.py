@@ -16,6 +16,7 @@ square_dimension_w_h = 20                   # Setting the hight and width of sna
 snake_head = [square_x_pos, square_y_pos]   # The initial position of our snake's head at start of the game
 snake_body = [[square_x_pos, square_y_pos], [(square_x_pos + square_dimension_w_h), square_y_pos], [(square_x_pos + (2 * square_dimension_w_h)), square_y_pos]]
                                             # The initial position of our snake's body at start of the game
+direction = "LEFT"                          # The initial direction the snake is going to at the start of the game
 
 # Defining our game window
 game_window = pygame.display.set_mode((screen_width, screen_height))
@@ -28,10 +29,25 @@ while run:
             pygame.quit()
             sys.exit()
 
+    # Check which key has been pressed and setting the direction variable
+    # We also check the current direction and make sure that snake is not running into itself
+    pressed_key = pygame.key.get_pressed()
+    if pressed_key[pygame.K_UP] and direction != "DOWN":
+        direction = "UP"
+    if pressed_key[pygame.K_DOWN] and direction != "UP":
+        direction = "DOWN"
+    if pressed_key[pygame.K_LEFT] and direction != "RIGHT":
+        direction = "LEFT"
+    if pressed_key[pygame.K_RIGHT] and direction != "LEFT":
+        direction = "RIGHT" 
+
+
     pygame.draw.rect(game_window, (255, 0, 0), (square_x_pos, square_y_pos, square_dimension_w_h, square_dimension_w_h))
 
     pygame.display.update()
     game_window.fill((0, 0, 0))
+
+    print (direction)
 
 pygame.quit()
 
