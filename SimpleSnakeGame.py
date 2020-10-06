@@ -17,6 +17,8 @@ snake_head = [square_x_pos, square_y_pos]   # The initial position of our snake'
 snake_body = [[square_x_pos, square_y_pos], [(square_x_pos + square_dimension_w_h), square_y_pos], [(square_x_pos + (2 * square_dimension_w_h)), square_y_pos]]
                                             # The initial position of our snake's body at start of the game
 direction = "LEFT"                          # The initial direction the snake is going to at the start of the game
+clock = pygame.time.Clock()                 # Definition of a timer to control the game's speed
+fps = 5                                     # Speed of the game (used by clock) 
 
 # Defining our game window
 game_window = pygame.display.set_mode((screen_width, screen_height))
@@ -46,7 +48,11 @@ while run:
 
     pygame.display.update()
     game_window.fill((0, 0, 0))
-
+    
+    # Setting the game of the speed
+    clock.tick(fps)
+    
+    
     print (direction)
 
 pygame.quit()
