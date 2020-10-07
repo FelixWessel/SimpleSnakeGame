@@ -51,7 +51,11 @@ while run:
     elif direction == "LEFT": 
         snake_head[0] -= step
 
-        
+    if direction == "RIGHT" and snake_head[0] > (screen_width - square_dimension_w_h):
+        snake_head[0] = 0
+        snake_head[0] += step
+    elif direction == "RIGHT":
+        snake_head[0] += step    
 
     pygame.draw.rect(game_window, (255, 0, 0), (snake_head[0], snake_head[1], square_dimension_w_h, square_dimension_w_h))
 
