@@ -19,6 +19,7 @@ snake_body = [[square_x_pos, square_y_pos], [(square_x_pos + square_dimension_w_
 direction = "LEFT"                          # The initial direction the snake is going to at the start of the game
 clock = pygame.time.Clock()                 # Definition of a timer to control the game's speed
 fps = 5                                     # Speed of the game (used by clock) 
+step = square_dimension_w_h                 # Defines how far the snake moves with each step
 
 # Defining our game window
 game_window = pygame.display.set_mode((screen_width, screen_height))
@@ -43,8 +44,16 @@ while run:
     if pressed_key[pygame.K_RIGHT] and direction != "LEFT":
         direction = "RIGHT" 
 
+    # Change the movement of the snake depending on the "direction" variable
+    if direction == "LEFT" and snake_head[0] < 0:
+        snake_head[0] = screen_width
+        snake_head[0] -= step
+    elif direction == "LEFT": 
+        snake_head[0] -= step
 
-    pygame.draw.rect(game_window, (255, 0, 0), (square_x_pos, square_y_pos, square_dimension_w_h, square_dimension_w_h))
+        
+
+    pygame.draw.rect(game_window, (255, 0, 0), (snake_head[0], snake_head[1], square_dimension_w_h, square_dimension_w_h))
 
     pygame.display.update()
     game_window.fill((0, 0, 0))
