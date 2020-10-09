@@ -57,8 +57,8 @@ while run:
     elif direction == "LEFT": 
         snake_head[0] -= step
 
-    if direction == "RIGHT" and snake_head[0] > (screen_width - square_dimension_w_h):
-        snake_head[0] = 0
+    if direction == "RIGHT" and snake_head[0] == (screen_width - square_dimension_w_h):
+        snake_head[0] = (0 - square_dimension_w_h)
         snake_head[0] += step
     elif direction == "RIGHT":
         snake_head[0] += step    
@@ -85,6 +85,7 @@ while run:
     
     
     print (turns)
+    print (snake_head[0])
 
 pygame.quit()
 
