@@ -63,6 +63,12 @@ while run:
     elif direction == "UP":
         snake_head[1] -= step
         
+    if direction == "DOWN" and snake_head[1] > (screen_height - square_dimension_w_h):
+        snake_head[1] = 0
+        snake_head[1] += step
+    elif direction == "DOWN":
+        snake_head[1] += step
+
     pygame.draw.rect(game_window, (255, 0, 0), (snake_head[0], snake_head[1], square_dimension_w_h, square_dimension_w_h))
 
     pygame.display.update()
