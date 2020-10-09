@@ -20,6 +20,8 @@ direction = "LEFT"                          # The initial direction the snake is
 clock = pygame.time.Clock()                 # Definition of a timer to control the game's speed
 fps = 5                                     # Speed of the game (used by clock) 
 step = square_dimension_w_h                 # Defines how far the snake moves with each step
+turns = 0                                   # Counting the number of turns our snake made
+score = 0                                   # Counting the number of food the snake has eaten
 
 # Defining our game window
 game_window = pygame.display.set_mode((screen_width, screen_height))
@@ -37,12 +39,16 @@ while run:
     pressed_key = pygame.key.get_pressed()
     if pressed_key[pygame.K_UP] and direction != "DOWN":
         direction = "UP"
+        turns += 1
     if pressed_key[pygame.K_DOWN] and direction != "UP":
         direction = "DOWN"
+        turns += 1
     if pressed_key[pygame.K_LEFT] and direction != "RIGHT":
         direction = "LEFT"
+        turns += 1
     if pressed_key[pygame.K_RIGHT] and direction != "LEFT":
         direction = "RIGHT" 
+        turns += 1
 
     # Change the movement of the snake depending on the "direction" variable
     if direction == "LEFT" and snake_head[0] < 0:
@@ -78,7 +84,7 @@ while run:
     clock.tick(fps)
     
     
-    print (direction)
+    print (turns)
 
 pygame.quit()
 
