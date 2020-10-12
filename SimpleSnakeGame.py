@@ -20,6 +20,7 @@ snake_body = [[square_x_pos, square_y_pos], [(square_x_pos + square_dimension_w_
                                             # The initial position of our snake's body at start of the game
 food_x_pos = (randint(0, colums) * square_dimension_w_h) # Setting the x position of food
 food_y_pos  = (randint(0, rows) * square_dimension_w_h) # Setting the y position of food
+food = [food_x_pos, food_y_pos]
 
 direction = "LEFT"                          # The initial direction the snake is going to at the start of the game
 clock = pygame.time.Clock()                 # Definition of a timer to control the game's speed
@@ -85,6 +86,7 @@ while run:
         snake_head[1] += step
 
     pygame.draw.rect(game_window, RED, (snake_head[0], snake_head[1], square_dimension_w_h, square_dimension_w_h))
+    pygame.draw.rect(game_window, GREEN, (food[0], food[1], square_dimension_w_h, square_dimension_w_h))
 
     pygame.display.update()
     game_window.fill((0, 0, 0))
