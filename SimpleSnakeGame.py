@@ -30,6 +30,7 @@ turns = 0                                   # Counting the number of turns our s
 score = 0                                   # Counting the number of food the snake has eaten
 RED = (255, 0, 0)                           # Variable that stores the red color for snake body
 GREEN = (0, 255, 0)                         # Variable that stores the green color for food
+ORANGE = (255, 69, 0)                       # Orange color for snake head
 
 
 
