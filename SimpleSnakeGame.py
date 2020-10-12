@@ -13,15 +13,24 @@ screen_height = 600                         # Setting the height of the game win
 square_x_pos = 60                           # The initial x-position of the snake head at start of the game
 square_y_pos = 60                           # The initial y-position of the snake head at start of the game
 square_dimension_w_h = 20                   # Setting the hight and width of snake's building blocks
+rows = ((screen_height - square_dimension_w_h) / square_dimension_w_h) # Rows on the screen
+colums = ((screen_width - square_dimension_w_h) / square_dimension_w_h) # Colums on the screen
 snake_head = [square_x_pos, square_y_pos]   # The initial position of our snake's head at start of the game
 snake_body = [[square_x_pos, square_y_pos], [(square_x_pos + square_dimension_w_h), square_y_pos], [(square_x_pos + (2 * square_dimension_w_h)), square_y_pos]]
                                             # The initial position of our snake's body at start of the game
+food_x_pos = (randint(0, colums) * square_dimension_w_h) # Setting the x position of food
+food_y_pos  = (randint(0, rows) * square_dimension_w_h) # Setting the y position of food
+
 direction = "LEFT"                          # The initial direction the snake is going to at the start of the game
 clock = pygame.time.Clock()                 # Definition of a timer to control the game's speed
 fps = 5                                     # Speed of the game (used by clock) 
 step = square_dimension_w_h                 # Defines how far the snake moves with each step
 turns = 0                                   # Counting the number of turns our snake made
 score = 0                                   # Counting the number of food the snake has eaten
+RED = (255, 0, 0)                           # Variable that stores the red color for snake body
+GREEN = (0, 255, 0)                         # Variable that stores the green color for food
+
+
 
 # Defining our game window
 game_window = pygame.display.set_mode((screen_width, screen_height))
@@ -75,7 +84,7 @@ while run:
     elif direction == "DOWN":
         snake_head[1] += step
 
-    pygame.draw.rect(game_window, (255, 0, 0), (snake_head[0], snake_head[1], square_dimension_w_h, square_dimension_w_h))
+    pygame.draw.rect(game_window, RED, (snake_head[0], snake_head[1], square_dimension_w_h, square_dimension_w_h))
 
     pygame.display.update()
     game_window.fill((0, 0, 0))
