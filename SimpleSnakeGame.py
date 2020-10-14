@@ -95,7 +95,7 @@ while run:
         score += 1
         food[0] = (randint(0, columns)) * square_dimension_w_h
         food[1] = (randint(0, rows)) * square_dimension_w_h
-        #fps += 0.5
+        fps += 0.5
 
 
 
