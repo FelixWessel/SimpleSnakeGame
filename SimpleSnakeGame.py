@@ -14,11 +14,11 @@ square_x_pos = 60                           # The initial x-position of the snak
 square_y_pos = 60                           # The initial y-position of the snake head at start of the game
 square_dimension_w_h = 20                   # Setting the hight and width of snake's building blocks
 rows = ((screen_height - square_dimension_w_h) / square_dimension_w_h) # Rows on the screen
-colums = ((screen_width - square_dimension_w_h) / square_dimension_w_h) # Colums on the screen
+columns = ((screen_width - square_dimension_w_h) / square_dimension_w_h) # Colums on the screen
 snake_head = [square_x_pos, square_y_pos]   # The initial position of our snake's head at start of the game
 snake_body = [[square_x_pos, square_y_pos], [(square_x_pos + square_dimension_w_h), square_y_pos], [(square_x_pos + (2 * square_dimension_w_h)), square_y_pos]]
                                             # The initial position of our snake's body at start of the game
-food_x_pos = (randint(0, colums) * square_dimension_w_h) # Setting the x position of food
+food_x_pos = (randint(0, columns) * square_dimension_w_h) # Setting the x position of food
 food_y_pos  = (randint(0, rows) * square_dimension_w_h) # Setting the y position of food
 food = [food_x_pos, food_y_pos]
 
@@ -88,10 +88,23 @@ while run:
 
     pygame.draw.rect(game_window, GREEN, (food[0], food[1], square_dimension_w_h, square_dimension_w_h))
 
+    snake_body.insert(0, list(snake_head))
+    if snake_head != food:
+        snake_body.pop()
+    else:
+        score += 1
+        food[0] = (randint(0, columns)) * square_dimension_w_h
+        food[1] = (randint(0, rows)) * square_dimension_w_h
+        #fps += 0.5
+
+
+
     pygame.draw.rect(game_window, ORANGE, (snake_head[0], snake_head[1], square_dimension_w_h, square_dimension_w_h))
     for segment in snake_body[1:]:
         pygame.draw.rect(game_window, RED, (segment[0], segment[1], square_dimension_w_h, square_dimension_w_h))
     
+
+
 
     pygame.display.update()
     game_window.fill((0, 0, 0))
