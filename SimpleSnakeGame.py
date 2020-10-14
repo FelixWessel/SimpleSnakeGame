@@ -86,8 +86,12 @@ while run:
     elif direction == "DOWN":
         snake_head[1] += step
 
-    pygame.draw.rect(game_window, RED, (snake_head[0], snake_head[1], square_dimension_w_h, square_dimension_w_h))
     pygame.draw.rect(game_window, GREEN, (food[0], food[1], square_dimension_w_h, square_dimension_w_h))
+
+    pygame.draw.rect(game_window, ORANGE, (snake_head[0], snake_head[1], square_dimension_w_h, square_dimension_w_h))
+    for segment in snake_body[1:]:
+        pygame.draw.rect(game_window, RED, (segment[0], segment[1], square_dimension_w_h, square_dimension_w_h))
+    
 
     pygame.display.update()
     game_window.fill((0, 0, 0))
