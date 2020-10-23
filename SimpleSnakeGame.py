@@ -32,8 +32,6 @@ RED = (255, 0, 0)                           # Variable that stores the red color
 GREEN = (0, 255, 0)                         # Variable that stores the green color for food
 ORANGE = (255, 69, 0)                       # Orange color for snake head
 
-
-
 # Defining our game window
 game_window = pygame.display.set_mode((screen_width, screen_height))
 
@@ -86,8 +84,12 @@ while run:
     elif direction == "DOWN":
         snake_head[1] += step
 
+    # This line draws the food at random positions on the screen
     pygame.draw.rect(game_window, GREEN, (food[0], food[1], square_dimension_w_h, square_dimension_w_h))
 
+    # This part makes the snake move forward; It is checked if the snake ate some food. If this is not the case 
+    # the last element of the array is popped of; It the snake ate food the else part increments the fps variable, adds
+    # a point to the score and updates food at a new random x and y position 
     snake_body.insert(0, list(snake_head))
     if snake_head != food:
         snake_body.pop()
@@ -97,25 +99,19 @@ while run:
         food[1] = (randint(0, rows)) * square_dimension_w_h
         fps += 0.5
 
-
-
+    # Drawing the snake head on the screen based on the updated postion
     pygame.draw.rect(game_window, ORANGE, (snake_head[0], snake_head[1], square_dimension_w_h, square_dimension_w_h))
+    
+    # Drawing the whole snake body on the screen except for the snake head
     for segment in snake_body[1:]:
         pygame.draw.rect(game_window, RED, (segment[0], segment[1], square_dimension_w_h, square_dimension_w_h))
     
-
-
-
     pygame.display.update()
     game_window.fill((0, 0, 0))
     
     # Setting the game of the speed
     clock.tick(fps)
     
-    
-    print (turns)
-    print (snake_head[0])
-
 pygame.quit()
 
 
