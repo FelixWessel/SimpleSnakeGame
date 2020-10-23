@@ -99,6 +99,11 @@ while run:
         food[1] = (randint(0, rows)) * square_dimension_w_h
         fps += 0.5
 
+    for segment in snake_body[1:]:
+        if segment == snake_head:
+            run = False
+
+
     # Drawing the snake head on the screen based on the updated postion
     pygame.draw.rect(game_window, ORANGE, (snake_head[0], snake_head[1], square_dimension_w_h, square_dimension_w_h))
     
