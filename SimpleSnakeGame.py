@@ -62,7 +62,7 @@ while run:
         turns += 1
 
     # Change the movement of the snake depending on the "direction" variable
-    if direction == "LEFT" and snake_head[0] < 0:
+    if direction == "LEFT" and snake_head[0] == 0:
         snake_head[0] = screen_width
         snake_head[0] -= step
     elif direction == "LEFT": 
@@ -74,14 +74,14 @@ while run:
     elif direction == "RIGHT":
         snake_head[0] += step    
 
-    if direction == "UP" and snake_head[1] < 0:
+    if direction == "UP" and snake_head[1] == 0:
         snake_head[1] = screen_height
         snake_head[1] -= step
     elif direction == "UP":
         snake_head[1] -= step
         
-    if direction == "DOWN" and snake_head[1] > (screen_height - square_dimension_w_h):
-        snake_head[1] = 0
+    if direction == "DOWN" and snake_head[1] == (screen_height - square_dimension_w_h):
+        snake_head[1] = (0 - square_dimension_w_h)
         snake_head[1] += step
     elif direction == "DOWN":
         snake_head[1] += step
