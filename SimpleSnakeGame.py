@@ -28,9 +28,9 @@ fps = 5                                     # Speed of the game (used by clock)
 step = square_dimension_w_h                 # Defines how far the snake moves with each step
 turns = 0                                   # Counting the number of turns our snake made
 score = 0                                   # Counting the number of food the snake has eaten
-RED = (255, 0, 0)                           # Variable that stores the red color for snake body
-GREEN = (0, 255, 0)                         # Variable that stores the green color for food
-ORANGE = (255, 69, 0)                       # Orange color for snake head
+RED = pygame.Color(255, 0, 0)               # Variable that stores the red color for snake body
+GREEN = pygame.Color(0, 255, 0)             # Variable that stores the green color for food
+ORANGE = pygame.Color(255, 69, 0)           # Orange color for snake head
 
 # Defining our game window
 game_window = pygame.display.set_mode((screen_width, screen_height))
